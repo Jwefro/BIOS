@@ -1,25 +1,68 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import {
+  BrowserRouter as Router, Link, Route, Switch
+  
+} from "react-router-dom";
+import Home from './components/home';
+import Servicios from './components/servicios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
+
+
+
+
+const App = () =>{
+return(
+  
+    <Router>
+      <div>
+    <div className="separador"> 
+      <nav className="navbar  bg-dark">
+        <input type="checkbox" id="check"/>
+        <label for="check" className="fabars"><FontAwesomeIcon icon={faBars} /></label>
+        
+       
+
+    <ul className="nav-menu">
+      <li className="nav-item ">
+        <Link to ="/" className="nav-link " >Inicio</Link>
+      </li>
+      <li className="nav-item">
+        <Link to ="/servicios" className="nav-link ">Servicios</Link>
+      </li>
+      <li className="nav-item">
+        <Link to =""className="nav-link ">Productos</Link>
+      </li>
+      <li className="nav-item">
+        <Link to =""className="nav-link ">Sobre Nosotros</Link>
+      </li>
+      <li className="nav-item">
+        <Link to =""className="nav-link ">Contactos</Link>
+      </li>
+    </ul> 
+        </nav>
+
+<Switch>
+          
+          <Route path="/servicios" exact>
+            <Servicios />
+          </Route>
+       <Route path="/" exact>
+            <Home />
+          </Route>
+        </Switch>
+
+
+
+
+
     </div>
-  );
+    </div>
+    </Router>
+)
+
 }
 
 export default App;
